@@ -1,0 +1,19 @@
+data_source:
+    "pass"
+
+retrieve_db:
+  data_dir: data/retrieved_db
+  output_file_name: retrieved_ips.csv
+  iterations: 1
+
+current_db:
+  data_dir: data/current_db
+  file_name: dnmp
+
+updated_db:
+  data_dir: data/updated_db
+  file_name: dnmp
+
+final_db:
+  data_dir: data/final_db
+  file_name: dnmp
