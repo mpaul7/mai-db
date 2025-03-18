@@ -1,0 +1,70 @@
+schema: '2.0'
+stages:
+  current_db:
+    cmd: mdb current
+    deps:
+    - path: params.yaml
+      hash: md5
+      md5: ed4b2973f37575fc297635908555b11a
+      size: 323
+    outs:
+    - path: data/current_db/dnmp
+      hash: md5
+      md5: 9fa41f84a6ef4e0d805b37ae0d0618c1
+      size: 731155
+  retrieve_db:
+    cmd: mdb asn
+    deps:
+    - path: params.yaml
+      hash: md5
+      md5: ed4b2973f37575fc297635908555b11a
+      size: 323
+    - path: src/mapping_asn_v2.py
+      hash: md5
+      md5: 6842bc091f0d01aa854843f88a95dc00
+      size: 9228
+    - path: src/retrieve_ip.py
+      hash: md5
+      md5: 014d8b2cd2ddb3f2f5ec2ca008eef8b1
+      size: 8761
+    outs:
+    - path: data/retrieved_db/retrieved_ips.csv
+      hash: md5
+      md5: 155c8af3aa6f803cc7e5a19a6c68ce1f
+      size: 4685901
+  update_db:
+    cmd: mdb update
+    deps:
+    - path: data/current_db/dnmp
+      hash: md5
+      md5: 9fa41f84a6ef4e0d805b37ae0d0618c1
+      size: 731155
+    - path: data/retrieved_db/retrieved_ips.csv
+      hash: md5
+      md5: 155c8af3aa6f803cc7e5a19a6c68ce1f
+      size: 4685901
+    - path: params.yaml
+      hash: md5
+      md5: ed4b2973f37575fc297635908555b11a
+      size: 323
+    outs:
+    - path: data/updated_db/dnmp
+      hash: md5
+      md5: a7a4c348d1fd983cc59d904682a1757f
+      size: 5160450
+  final_db:
+    cmd: mdb final
+    deps:
+    - path: data/updated_db/dnmp
+      hash: md5
+      md5: a7a4c348d1fd983cc59d904682a1757f
+      size: 5160450
+    - path: params.yaml
+      hash: md5
+      md5: ed4b2973f37575fc297635908555b11a
+      size: 323
+    outs:
+    - path: data/final_db/dnmp
+      hash: md5
+      md5: 8821576c17344b4c198700f5f8c0bc2e
+      size: 4277379

@@ -1,0 +1,33 @@
+stages:
+  current_db:
+    cmd: mdb current
+    deps:
+    - params.yaml
+    outs:
+    - data/current_db/dnmp
+  
+  retrieve_db:
+    cmd: mdb asn
+    deps:
+    - params.yaml
+    - src/retrieve_ip.py
+    - src/mapping_asn_v2.py
+    outs:
+    - data/retrieved_db/retrieved_ips.csv
+
+  update_db:
+    cmd: mdb update
+    deps:
+    - params.yaml
+    - data/current_db/dnmp
+    - data/retrieved_db/retrieved_ips.csv
+    outs:
+    - data/updated_db/dnmp
+
+  final_db:
+    cmd: mdb final
+    deps:
+    - params.yaml
+    - data/updated_db/dnmp
+    outs:
+    - data/final_db/dnmp

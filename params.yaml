@@ -1,14 +1,15 @@
 data_source:
     "pass"
 
+current_db:
+  data_dir: data/current_db
+  data_source_dir: /opt/twc
+  file_name: dnmp
+
 retrieve_db:
   data_dir: data/retrieved_db
   output_file_name: retrieved_ips.csv
   iterations: 1
-
-current_db:
-  data_dir: data/current_db
-  file_name: dnmp
 
 updated_db:
   data_dir: data/updated_db
