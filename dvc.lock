@@ -30,8 +30,8 @@ stages:
     outs:
     - path: data/retrieved_db/retrieved_ips.csv
       hash: md5
-      md5: 155c8af3aa6f803cc7e5a19a6c68ce1f
-      size: 4685901
+      md5: 789fab282eb6b34c3d077deb0db0402f
+      size: 4685929
   update_db:
     cmd: mdb update
     deps:
@@ -41,8 +41,8 @@ stages:
       size: 731155
     - path: data/retrieved_db/retrieved_ips.csv
       hash: md5
-      md5: 155c8af3aa6f803cc7e5a19a6c68ce1f
-      size: 4685901
+      md5: 789fab282eb6b34c3d077deb0db0402f
+      size: 4685929
     - path: params.yaml
       hash: md5
       md5: ed4b2973f37575fc297635908555b11a
@@ -50,15 +50,15 @@ stages:
     outs:
     - path: data/updated_db/dnmp
       hash: md5
-      md5: a7a4c348d1fd983cc59d904682a1757f
-      size: 5160450
+      md5: 60d0b34e9eaf24e23debfc8521d4b35c
+      size: 5160478
   final_db:
     cmd: mdb final
     deps:
     - path: data/updated_db/dnmp
       hash: md5
-      md5: a7a4c348d1fd983cc59d904682a1757f
-      size: 5160450
+      md5: 60d0b34e9eaf24e23debfc8521d4b35c
+      size: 5160478
     - path: params.yaml
       hash: md5
       md5: ed4b2973f37575fc297635908555b11a
@@ -66,5 +66,5 @@ stages:
     outs:
     - path: data/final_db/dnmp
       hash: md5
-      md5: 8821576c17344b4c198700f5f8c0bc2e
-      size: 4277379
+      md5: 981f146dbb72bfd21d067f17d3f4f15d
+      size: 4277403
